@@ -25,14 +25,14 @@ jobs:
       - name: Run weather data script
         run: python klga_request.py
 
-- name: Commit updated CSV if changes exist
-  env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  run: |
-    git config --global user.name "github-actions"
-    git config --global user.email "github-actions@github.com"
-    git add weather_data.csv
-    if [ "$(git status --porcelain)" != "" ]; then
-      git commit -m "Update weather data"
-      git push "https://x-access-token:${GITHUB_TOKEN}@github.com/coopfos/KLGA.git" HEAD:main
-    fi
+      - name: Commit updated CSV if changes exist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "coopfos"
+          git config --global user.email "cooperbfoster@gmail.com"
+          git add weather_data.csv
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Update weather data"
+            git push "https://x-access-token:${GITHUB_TOKEN}@github.com/coopfos/KLGA.git" HEAD:main
+          fi
