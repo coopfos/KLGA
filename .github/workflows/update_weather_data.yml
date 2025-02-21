@@ -32,7 +32,7 @@ jobs:
     git config --global user.name "github-actions"
     git config --global user.email "github-actions@github.com"
     git add weather_data.csv
-    if ! git diff-index --quiet HEAD; then
+    if [ "$(git status --porcelain)" != "" ]; then
       git commit -m "Update weather data"
       git push "https://x-access-token:${GITHUB_TOKEN}@github.com/coopfos/KLGA.git" HEAD:main
     fi
