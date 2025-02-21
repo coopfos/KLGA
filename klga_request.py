@@ -21,7 +21,7 @@ stats = [
 ]
 weather_stats = pd.DataFrame(stats).transpose()
 
-csv_filename = "data/weather_data.csv"
+csv_filename = "weather_data.csv"
 
 # If the CSV exists, append only new data with timestamp
 if os.path.exists(csv_filename):
